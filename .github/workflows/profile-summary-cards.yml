@@ -14,13 +14,16 @@ jobs:
     name: generate-github-profile-summary-cards
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: GitHub Profile Summary Cards
       - uses: vn7n24fzkq/github-profile-summary-cards@release
         env: # default use ${{ secrets.GITHUB_TOKEN }}, you should replace with your personal access token
           GITHUB_TOKEN: ${{ secrets.SUMMARY_CARDS_TOKEN }}
         with:
           USERNAME: ${{ github.repository_owner }}
-      - uses: Platane/snk@master
+      - name: Generates a snake game
+        uses: Platane/snk@master
         with:
           # github user name to read the contribution graph from (**required**)
           # using action context var `github.repository_owner` or specified user
